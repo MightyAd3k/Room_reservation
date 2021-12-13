@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add your room</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label>Name of the room</label>
+    <input type="text" name="name"><br><br>
+    <label>Capacity of the room</label>
+    <input type="number" step="1" name="capacity"><br><br>
+    <input type="checkbox" name="projector"><label>Is projector available?</label><br><br>
+
+    <input type="submit" value="Create">
+</form>
+    {% if error %}
+        <h4>{{ error }}</h4>
+    {% endif %}
+</body>
+{% endblock %}

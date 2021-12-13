@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>{{ room.name }}</th><th>{{ room.capacity }}</th><th>{{ room.projector }}</th>
+            <td><a href="/room/edit/{{ room.id }}">Edit</a></td>
+            <td><a href="/room/delete/{{ room.id }}">Delete</a></td>
+            <td><a href="/room/reserve/{{ room.id }}">Reserve</a></td>
+        </tr>
+    </thead>
+</table>
+<ul>
+    {% for room in reservations %}
+        <li>{{ room.date }}<br>{{ room.comment }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

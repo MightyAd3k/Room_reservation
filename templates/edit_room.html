@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>You are editing {{ room.name }} at the moment.</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="Rooms's name" {% if room.name %} dirname {% endif %} value="{{ room.name }}" name="name">
+    <input type="Number" placeholder="Rooms's capacity" value="{{ room.capacity }}" name="capacity">
+    <input type="checkbox" name="projector" {% if room.projector %} checked {% endif %}><label>Projector</label><br><br>
+    <input type="submit" value="Confirm">
+</form>
+
+{% if error %}
+    <h4>{{ error }}</h4>
+{% endif %}
+{% endblock %}

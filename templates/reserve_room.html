@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label>Commentary</label>
+        <input type="text" name="comment"><br><br>
+        <label>Select a date</label>
+        <input type="date" name="reservation_date"><br><br>
+        <input type="submit" value="Create">
+
+        {% if error %}
+            <h4>{{ error }}</h4>
+        {% endif %}
+    </form>
+</div>
+<div>
+    <ul>
+        {% for room in reservations %}
+            <li>{{ room.date }}<br>{{ room.comment }}</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+{% endblock %}
